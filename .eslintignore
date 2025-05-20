@@ -1,0 +1,7 @@
+dist/
+node_modules/
+.eslintrc.cjs
+.prettierrc.cjs
+vite.config.ts
+coverage/
+src/test/

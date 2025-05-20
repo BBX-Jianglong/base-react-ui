@@ -1,0 +1,369 @@
+* {
+  box-sizing: border-box;
+}
+:root {
+  --focus-color: #fccf00;
+  --error-color: #f14a31;
+  --disabled-color: #f2f2f3;
+  --border-color: #e4e5e7;
+  --font-color: #222222;
+  --prefix-right: 100px;
+  --prefix-bottom: 5px;
+  --prefix-left: 5px;
+  --ex-base-height: 48px;
+}
+dialog {
+  display: flex;
+  border: 0;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+dialog:not([type='hidden'])::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal {
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none !important;
+}
+.modal__inner {
+  width: 500px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 32px;
+  position: relative;
+}
+.modal__header-title {
+  color: var(--font-color);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 36px;
+}
+.modal__header-close {
+  height: 32px;
+  width: 32px;
+  position: relative;
+  border-radius: 6px;
+  background: url('@/assets/img/close.svg') no-repeat center transparent;
+  border-width: 2px;
+  border-style: none;
+  cursor: pointer;
+}
+.modal__body {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 32px;
+  padding-right: 32px;
+  background-color: var(--disabled-color);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.modal__footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: sticky;
+  bottom: 0px;
+  background: var(--disabled-color);
+  z-index: 10;
+  display: flex;
+  gap: 20px;
+}
+.exMainLeft {
+  display: flex;
+}
+.exMainTop {
+  display: flex;
+  flex-direction: column;
+}
+.prefixLeft {
+  display: flex;
+  align-items: center;
+  height: var(--ex-base-height);
+}
+.prefixLeft {
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: var(--prefix-right);
+}
+.prefixTop {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: var(--prefix-bottom);
+  margin-left: var(--prefix-left);
+}
+.exBody {
+  display: flex;
+  flex-direction: column;
+}
+.exBodySm {
+  width: 33%;
+}
+.exBodyMed {
+  width: 50%;
+}
+.exBodyLg {
+  width: 100%;
+}
+.exContainer {
+  position: relative;
+}
+/** 入力コンポーネント */
+.exContainer .inputEx {
+  background: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px 35px 10px 10px;
+  font-size: 16px;
+  font-weight: 600;
+  height: var(--ex-base-height);
+  width: 100%;
+  color: var(--font-color);
+}
+.exContainer .inputEx::placeholder {
+  color: var(--border-color);
+  font-weight: 300;
+}
+.exContainer .inputEx:focus {
+  border-color: var(--focus-color);
+  outline: none;
+}
+.exContainer .inputEx:disabled {
+  background: var(--disabled-color);
+  font-weight: 300;
+  cursor: not-allowed;
+}
+.exContainer .clear {
+  position: absolute;
+  top: 25px;
+  right: 15px;
+  z-index: 1;
+  background: url('@/assets/img/clear.svg') no-repeat center center;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/** 選択（プルダウン）コンポーネント */
+.exContainer .selectEx {
+  background: #fff url('@/assets/img/arrow-down.svg') no-repeat right 8px center;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 5px 35px 5px 12px;
+  font-size: 16px;
+  font-weight: 600;
+  height: var(--ex-base-height);
+  width: 100%;
+  color: var(--font-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.exContainer .selectEx::-ms-expand {
+  display: none;
+}
+.exContainer .selectEx:focus-visible {
+  border: 1px solid var(--focus-color);
+  outline: none;
+}
+.exContainer .selectEx:disabled {
+  background: var(--disabled-color) url('@/assets/img/arrow-down.svg') no-repeat right 8px center;
+  font-weight: 300;
+  cursor: not-allowed;
+}
+/** チェックボックスコンポーネント */
+.checkboxEx {
+  display: flex;
+  position: relative;
+}
+.checkboxEx input:hover {
+  cursor: pointer;
+}
+.checkboxEx label {
+  color: var(--font-color);
+  font-size: 16px;
+  cursor: pointer;
+  line-height: var(--ex-base-height);
+  margin-left: 15px;
+}
+.checkboxEx label::before,
+.checkboxEx label::after {
+  content: '';
+  position: absolute;
+}
+.checkboxEx label::before {
+  top: 12px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background: #fff;
+}
+.checkboxEx label::after {
+  top: 19px;
+  left: 5px;
+  width: 13px;
+  height: 9px;
+  background: url('@/assets/img/icon-check-black.svg') center/contain no-repeat;
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.checkboxEx input:checked + label {
+  text-shadow: 0.25px 0px 0.1px currentColor, -0.25px 0px 0.1px currentColor;
+}
+.checkboxEx input:checked + label::before {
+  border-color: var(--focus-color);
+  background-color: var(--focus-color);
+}
+.checkboxEx input:checked + label::after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.checkboxEx input:focus + label::before {
+  border: 1px solid var(--focus-color);
+}
+.checkboxEx input:disabled + label {
+  cursor: not-allowed;
+}
+.checkboxEx input:disabled + label::before {
+  border-color: #b4b5b9;
+  background-color: var(--disabled-color);
+}
+/**ラジオコンポーネント */
+.radioExGroup {
+  display: flex;
+}
+.radioEx {
+  position: relative;
+}
+.radioEx + .radioEx {
+  margin-left: 30px;
+}
+.radioEx input:hover {
+  cursor: pointer;
+}
+.radioEx label {
+  color: var(--font-color);
+  font-size: 16px;
+  cursor: pointer;
+  line-height: var(--ex-base-height);
+  margin-left: 15px;
+}
+.radioEx label::before,
+.radioEx label::after {
+  content: '';
+  position: absolute;
+}
+.radioEx label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  background-color: #fff;
+}
+.radioEx label::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: var(--focus-color);
+  position: absolute;
+  top: 16px;
+  left: 6px;
+  border-radius: 100%;
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.radioEx input:checked + label::before {
+  border-color: var(--focus-color);
+}
+.radioEx input:checked + label {
+  text-shadow: 0.25px 0px 0.1px currentColor, -0.25px 0px 0.1px currentColor;
+}
+.radioEx input:checked + label::after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.radioEx input:focus + label::before {
+  border: 1px solid var(--focus-color);
+}
+.radioEx input:disabled + label {
+  cursor: not-allowed;
+  color: #222;
+}
+.radioEx input:disabled + label::before {
+  border-color: #b4b5b9;
+  background-color: var(--disabled-color);
+}
+.radioEx input:disabled + label::after {
+  background-color: #b4b5b9;
+}
+/** 行コンポーネント */
+.rowEx {
+  display: flex;
+  margin-top: 1rem;
+}
+/** 列コンポーネント */
+.colEx {
+  flex: 1 0 0%;
+  margin: 0 0.75rem 0 0.75rem;
+}
+/** ボタンコンポーネント */
+.buttonEx {
+  cursor: pointer;
+  height: 48px;
+  font-size: 16px;
+  border: 1px solid #e4e5e7;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0 25px;
+}
+.buttonExYellow {
+  background-color: var(--focus-color);
+}
+.buttonExBlue {
+  background-color: #3668d8;
+  color: #fff;
+}
+.buttonExBlack {
+  background-color: #222222;
+  color: #fff;
+}
+.buttonExYellow:hover,
+.buttonExBlue:hover,
+.buttonExBlack:hover {
+  opacity: 0.8;
+}
+.error {
+  color: var(--font-color) !important;
+  border-color: var(--error-color) !important;
+}
+.error_msg {
+  font-size: 16px !important;
+  margin-top: 5px;
+  margin-left: 10px;
+  color: var(--error-color) !important;
+  font-weight: 600;
+}
